@@ -1,0 +1,58 @@
+<?php 
+session_start();
+$_SESSION["new"]="batata/Bd_Class";
+require_once('BdClass.php');
+//$new="manga";
+//echo $_SESSION["new"];
+if(isset($_GET['login']) and isset($_GET['senha'])){
+	$objBd = new bd();
+	$conn=$objBd->conecta_mysql();
+	//echo "he";
+	$param = array();
+	array_push($param, $_GET['login']);
+	array_push($param, $_GET['senha']);
+	$sql="SELECT nome,senha, id, tipo from usuario where nome=? and senha=?;";
+	$result = $objBd->exec($sql, 'ss', $param);
+	$valor=mysqli_fetch_array($result);
+	if (isset($valor['nome'])){
+		$_SESSION["nome"]=$valor['nome'];
+		$_SESSION["senha"]=$valor['senha'];
+		$_SESSION["id"]=$valor['id'];
+		$_SESSION["tipo"]=$valor['tipo'];
+		$_SESSION["i"] = 1;
+		echo $_SESSION["nome"];
+		header("location: index.php");
+	}
+	else{
+		?>
+			<script type="text/javascript">
+				alert("Erro ao logar");
+				header("location: index.php");
+			</script>
+		<?php
+	}
+}
+
+
+?>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" media="screen" href="estilos.css" />
+</head>
+<body>
+
+	<form method="GET" action="login.php">
+        	<div class="login">
+        		<h2 >Login</h2>
+        		<div style="margin-bottom: 2px;">Nome: <input type="text" name="login">  </div>
+    			<div style="margin-bottom: 2px;">Senha: <input type="password" name="senha"><br></div>
+				<div><button type="submit">Logar</button></div>
+        	</div>
+	</form>
+</body>
+</html>
