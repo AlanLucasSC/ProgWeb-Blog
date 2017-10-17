@@ -1,6 +1,5 @@
 function abrirPag(valor){
     var url = valor;
-
     xmlRequest.open("GET",url,true);    
     xmlRequest.onreadystatechange = mudancaEstado;
     xmlRequest.send(null);
