@@ -1,0 +1,151 @@
+body
+{
+	background-color: white;
+}
+#menuHorizontal {
+  	position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 20%;
+    height: 55px;
+    background-color: rgb(210, 0, 0);
+}
+#menuOpcoes
+{
+	position: fixed;
+    top: 0px;
+    left: 20%;
+    background-color: rgb(210, 0, 0);
+    width: 80%;
+    height: 42px;
+    color: slategray;
+    text-align: right;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+#menuLateral
+{
+	position: fixed;
+  	top: 55px;
+  	left: 0px;
+  	background-color: white;
+  	width: 12%;
+  	height: 100%;
+  	color: slategray;
+}
+#conteudo
+{
+	margin-top: 55px;
+}
+hr
+{
+	background-color: red;
+	color: red;
+}
+#Titulo
+{
+	color: rgb(220,220,220);;
+	margin-top: 5px;
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+#TituloLateral
+{
+	margin-top: 5px;
+	margin-left: 0px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.p
+{
+	text-decoration: none;
+	color: rgb(220,220,220);
+	background-color: rgb(210, 0, 0);
+	padding: 3px;
+	border: 4px solid rgb(210, 0, 0);
+	margin: 0px 6px 0px 6px;
+}
+.p:hover
+{
+	background-color: rgb(190, 0, 0);
+	padding: 3px;
+	border: 5px solid rgb(190, 0, 0);
+	margin: -1px 5px -1px 5px;
+}
+.logo
+{
+	text-decoration: none;
+	color: black;
+	background-color: white;
+	padding-bottom: 15px;
+	border: 4px solid white;
+	margin: 0px 6px 0px 6px;
+}
+
+div.login
+{
+	margin-left: 40%;
+    margin-top: 20%;
+    width: 20%;
+    text-align: left;
+    background-color: white;
+}
+div.post
+{
+	margin-left: 10%;
+    margin-top: 20%;
+    width: 100%;
+    text-align: left;
+    background-color: white;
+}
+.campo
+{
+	margin-left: 20%;
+}
+div.CenterField
+{
+	margin-left: 40%;
+}
+.btn
+{
+	margin-left: 60%;
+}
+#LeftContent
+{
+	margin-top: 55px;
+}
+.CenterContent
+{
+	margin-left: 40%;
+    margin-top: 20%;
+    width: 20%;
+    text-align: left;
+}
+#RightContent
+{
+	margin-top: 55px;
+	margin-left: 40%;
+}
+.desc
+{
+	font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.11;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+.publicacao
+{
+	text-decoration: none;
+	color: rgb(190, 0, 0);
+	margin: 0px 6px 0px 6px;
+}
+p.texto {
+    width: 11em; 
+    border: 1px solid #000000;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
