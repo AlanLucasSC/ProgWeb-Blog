@@ -20,7 +20,10 @@
 				</script>
 		<?php
 		if($result == 1)
-			header("location:index.php");
+			{
+				$_SESSION['tipoAlert'] = 'Post feito com sucesso';
+				header("location:../index.php");
+			}
 		else{
 			?>
 				<script type="text/javascript">
@@ -38,7 +41,7 @@
 	<title>post</title>
 </head>
 <body>
-	<form method="GET" action="post.php"> 
+	<form method="GET" action="Funcoes/post.php"> 
         	<div style="    margin-left: 25%; margin-top: 10%;">
         		<h2 >Nova Publicação</h2>
         		<div>Título:  <textarea name="titulo" rows="1" cols="93"></textarea> </div>

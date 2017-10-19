@@ -4,6 +4,6 @@
 	//$_SESSION["nome"]=NULL;
 	//$_SESSION["id"]=NULL;
 	//$_SESSION["senha"]=NULL;
-	header("location:index.php");
+	header("location:../index.php");
 	
 ?>

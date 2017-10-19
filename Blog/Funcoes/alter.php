@@ -10,13 +10,19 @@
 		array_push($param, $_GET['senha']);
 		array_push($param, $_GET['id']);
 		array_push($param, $_GET['id']);
-		$sql="UPDATE `Usuario` SET `nome`= ?,`senha`= ?,`id`= ? WHERE id = ?;";
+		$sql="UPDATE `usuario` SET `nome`= ?,`senha`= ?,`id`= ? WHERE id = ?;";
 		$result = $objBd->exec($sql, 'ssss', $param);
+		?>
+			<script type="text/javascript">
+				alert("Alterado com sucesso");
+			</script>
+		<?php
 		$_SESSION["nome"]=$_GET['login'];
 		$_SESSION["senha"]=$_GET['senha'];
 		$_SESSION["id"]=$_GET['id'];
 		$_SESSION["i"] = 1;
-		header("location:index.php");
+		$_SESSION['tipoAlert'] = 'Alterado com sucesso';
+		header("location:../index.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -32,7 +38,7 @@
 </head>
 <body >
 
-	<form method="GET" action="alter.php">
+	<form method="GET" action="Funcoes/alter.php">
         	<div class="login">
         		<h2 >Alterar</h2>
         		<div style="margin-bottom: 2px;">Novo Nome: <input type="text" name="login" value='<?php echo $_SESSION["nome"]?>'>  </div>

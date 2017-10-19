@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
 	require_once('Funcoes/funcoes.php');
 	if(valida() == 0)
@@ -11,8 +10,13 @@
 		$i = 1;
 		$tipo = $_SESSION["tipo"];
 	}
+	if (isset($_SESSION['tipoAlert'])) {
+		if (strcmp($_SESSION['tipoAlert'],"no") != 0) {
+			echo "<script type=\"text/javascript\"> alert(\"{$_SESSION['tipoAlert']}\");</script>";
+			$_SESSION['tipoAlert'] = 'no';
+		}
+	}
 	$_SESSION["QntPosr"] = 0;
-
 ?>
 
 
@@ -20,22 +24,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+	<meta http-equiv="pragma" content="no-cache">
 	<meta charset="utf-8">
 	<title>Blog</title>
 	<link type="text/css" rel="stylesheet" media="screen" href="Funcoes/estilos.css" />
 	<script language="javascript" src="Ajax/ajax.js"></script>
 	<script language="javascript" src="Ajax/instrucao.js"></script>
-	<script>
-
-		function loadDoc() 
-		{
-  			$("#conteudo").load("Funcoes/login.php");
-		}
-		function direcionar() {
-		    var x = document.getElementById("mySelect").value;
-		    document.getElementById("conteudo").innerHTML = "You selected: " + x;
-		}
-	</script>
 	
 </head>
 <body>
@@ -83,14 +77,37 @@
 			</div>
 		</div>
 		<div id="conteudo">
-			<script type="text/javascript">
-					abrirPag('Funcoes/posts.php');
-			</script>
-			<div id="conteudo_mostrar">
-				
-				
+
+			<?php
+				if (isset($_SESSION['error'])) {
+					if ($_SESSION['error'] == 1) {
+						echo "<script type=\"text/javascript\"> alert(\"{$_SESSION['type']}\");</script>";
+						?>
+							<script type="text/javascript">
+								abrirPag("Funcoes/login.php");
+							</script>
+						<?php
+						$_SESSION['error'] = 0;
+					}
+					else {
+						?>
+							<script type="text/javascript">
+								abrirPag('Funcoes/posts.php');
+							</script>
+						<?php
+					}
+				}
+				else {
+					?>
+						<script type="text/javascript">
+							abrirPag('Funcoes/posts.php');
+						</script>
+					<?php
+				}
+			?>
+
+			<div id="conteudo_mostrar">	
 			</div>
-			<a class="p" href="#" onclick="abrirPag('Funcoes/posts.php');">Proxima Página</a>
 		</div>
 	</div>
 <div id="Alert">

@@ -13,13 +13,14 @@
 		
 		$result = $objBd->exec($sql, 'sss', $param);
 		if($result == 1)
-			header("location:index.php");
+			{
+				$_SESSION['tipoAlert'] = 'Cadastro feito com sucesso';
+				header("location:../index.php");
+			}
 		else{
-			?>
-				<script type="text/javascript">
-					alert("Erro ao logar");
-				</script>
-			<?php
+			$_SESSION['error'] = 1;
+			$_SESSION['where'] = '\"Funcoes/login.php\"';
+			$_SESSION['type'] = 'Erro ao cadastrar';
 		}
 	}
 ?>
@@ -29,7 +30,7 @@
 </head>
 <body>
 
-	<form method="GET" action="cadastrar.php"> 
+	<form method="GET" action="Funcoes/cadastrar.php"> 
         	<div class="login">
         		<h2 >Cadastrar</h2>
         		<div style="margin-bottom: 2px;">Nome: <input type="text" name="login" >  </div>

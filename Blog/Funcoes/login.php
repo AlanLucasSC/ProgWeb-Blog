@@ -20,16 +20,15 @@ if(isset($_GET['login']) and isset($_GET['senha'])){
 		$_SESSION["id"]=$valor['id'];
 		$_SESSION["tipo"]=$valor['tipo'];
 		$_SESSION["i"] = 1;
-		echo $_SESSION["nome"];
-		header("location: index.php");
+		$_SESSION['tipoAlert'] = 'Login feito com sucesso';
+		//echo $_SESSION["nome"];
+		header("location: ../index.php");
 	}
 	else{
-		?>
-			<script type="text/javascript">
-				alert("Erro ao logar");
-				header("location: ../index.php");
-			</script>
-		<?php
+		$_SESSION['error'] = 1;
+		$_SESSION['where'] = '\"Funcoes/login.php\"';
+		$_SESSION['type'] = 'Erro ao logar';
+		header("location: ../index.php");
 	}
 }
 
