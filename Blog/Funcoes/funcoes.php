@@ -17,4 +17,20 @@ function logout(){
 	$_SESSION["senha"]=NULL;
 	header("location:index.php");
 }
+
+function QntPost()
+{
+	$path = "SELECT COUNT(post.id) as qnt FROM post ";
+	$resultado = SelectMySQL($path);
+	$linha = $resultado->fetch(PDO::FETCH_ASSOC);
+	return $linha['qnt'];
+}
+
+function SelectMySQL($select)
+{
+	$user = 'root';
+	$pass = '';
+	$dbh = new PDO('mysql:host=localhost;dbname=blog', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+	return $dbh->query($select);
+}
 ?>

@@ -1,3 +1,6 @@
+<link type="text/css" rel="stylesheet" media="screen" href="funcoes/estilos.css" />
+<script language="javascript" src="Ajax/ajax.js"></script>
+<script language="javascript" src="Ajax/instrucao.js"></script>
 <?php
 echo "<br><br>";
 					try {
@@ -12,15 +15,26 @@ echo "<br><br>";
 					    foreach($dbh->query($path) as $row) {
 					        //print_r($row);
 					        $path = "'ShowPost.php'";
-					        echo '<div style="margin: auto; width: 50%;">';
-					    			echo '<div > <p ><h4 style="display: inline;" >Criação: </h4> '.$row['creation_time']."</div> ";
-					    			echo '<div > <h3 style="margin-bottom: 0px;">Titulo: '.$row['Titulo']."</h3></div> ";;
-					    			echo '<div > <h4 style="margin-top: 0px; color: black">'.$row['Descricao']."</h4></div> ";
-					    			echo '<div> <p style="white-space: pre-line;">'.$row['post']."</p></div> ";
-					    			echo '<div class="desc" style=" margin-left: 45%; text-align: left;" > Por: '.$row['nome']."</div> ";
+					        echo '<div class="Centralizado" style="">';
+					    			echo '<div > <p ><h4 class="hCriacao" >Criação: </h4> '.$row['creation_time']."</div> ";
+					    			echo '<div > <h3 class="tituloh3">Titulo: '.$row['Titulo']."</h3></div> ";
+					    			echo '<div > <h4 class="hDesc">'.$row['Descricao']."</h4></div> ";
+					    			echo '<div> <p id="pPost">'.$row['post']."</p></div> ";
+					    			echo '<div class="ShowName"> Por: '.$row['nome']."</div> ";
+
 					    			
 					    	echo "</div>";
-					    	echo "<hr style=' margin-left: 10%; margin-right: 10%;'>";
+					    	echo "<hr class=\"hrPost\">";
+					    	echo "<div class=\"TituloComentarios\">";
+					    		echo "<h3>Comentários</h3><br>";
+
+					    	echo "</div>";
+					    	echo "<div class=\"btnComentario\">";
+					    		echo "<br><a class=\"p\" href=\"#\" id=\"display\" onclick=\"myFunction();\">Comentar</a>";
+					    	echo "</div>";
+					    	echo "<div id=\"NovoComentario\"   >";
+					    		echo "BATATA";
+					    	echo "</div>";
 					    	echo "<br >";
 					    }
 

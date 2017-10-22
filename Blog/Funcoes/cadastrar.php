@@ -8,10 +8,9 @@
 		$param = array();
 		array_push($param, $_GET['login']);
 		array_push($param, $_GET['senha']);
-		array_push($param, $_GET['TipoDeUsario']);
-		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`) VALUES (?, ?, NULL, ?);";
+		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`, `Ativo`) VALUES (?, ?, NULL, 1, 1);";
 		
-		$result = $objBd->exec($sql, 'sss', $param);
+		$result = $objBd->exec($sql, 'ss', $param);
 		if($result == 1)
 			{
 				$_SESSION['tipoAlert'] = 'Cadastro feito com sucesso';
@@ -35,6 +34,7 @@
         		<h2 >Cadastrar</h2>
         		<div style="margin-bottom: 2px;">Nome: <input type="text" name="login" >  </div>
     			<div style="margin-bottom: 2px;">Senha: <input type="password" name="senha"><br></div>
+    			<!--
     			<div>Tipo de usuário
     				<select name="TipoDeUsario">
     					<option value="1" >Usuário normal</option>
@@ -43,6 +43,7 @@
     					<option value="4">Adm geral</option>
     				</select>
     			</div>
+    			-->
 				<div><button type="submit">Cadastrar</button></div>
         	</div>
 	</form>

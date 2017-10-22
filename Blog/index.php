@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	require_once('Funcoes/funcoes.php');
+	$qnt = QntPost();
+	//echo "<script type=\"text/javascript\"> alert(\"{$qnt}\");</script>";
 	if(valida() == 0)
 	{
 		$i = 0;
@@ -30,6 +32,7 @@
 	<link type="text/css" rel="stylesheet" media="screen" href="Funcoes/estilos.css" />
 	<script language="javascript" src="Ajax/ajax.js"></script>
 	<script language="javascript" src="Ajax/instrucao.js"></script>
+	<script language="javascript" src="js/funcoes.js"></script>
 	
 </head>
 <body>

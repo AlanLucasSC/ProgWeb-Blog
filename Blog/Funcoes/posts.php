@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" media="screen" href="estilos.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="funcoes/estilos.css" />
 <script language="javascript" src="../Ajax/ajax.js"></script>
 <script language="javascript" src="../Ajax/instrucao.js"></script>
 <?php
