@@ -96,6 +96,7 @@
 						?>
 							<script type="text/javascript">
 								abrirPag('Funcoes/posts.php');
+								//abrirPag('Funcoes/comment.php');
 							</script>
 						<?php
 					}
@@ -104,6 +105,7 @@
 					?>
 						<script type="text/javascript">
 							abrirPag('Funcoes/posts.php');
+							//abrirPag('Funcoes/comment.php');
 						</script>
 					<?php
 				}

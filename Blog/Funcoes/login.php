@@ -11,7 +11,7 @@ if(isset($_GET['login']) and isset($_GET['senha'])){
 	$param = array();
 	array_push($param, $_GET['login']);
 	array_push($param, $_GET['senha']);
-	$sql="SELECT nome,senha, id, tipo from usuario where nome=? and senha=?;";
+	$sql="SELECT nome, senha, id, tipo from usuario where nome=? and senha=? and status = 1;";
 	$result = $objBd->exec($sql, 'ss', $param);
 	$valor=mysqli_fetch_array($result);
 	if (isset($valor['nome'])){

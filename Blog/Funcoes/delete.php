@@ -6,7 +6,7 @@
 	$conn=$objBd->conecta_mysql();
 	$param = array();
 	array_push($param, $_SESSION["id"]);
-	$sql="DELETE FROM `Usuario` WHERE id = ?;";
+	$sql="UPDATE `usuario` SET `status`= 0 WHERE id = ?;";
 	$result = $objBd->exec($sql, 's', $param);
 ?>
 <?php

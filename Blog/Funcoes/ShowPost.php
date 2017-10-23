@@ -2,7 +2,12 @@
 <script language="javascript" src="Ajax/ajax.js"></script>
 <script language="javascript" src="Ajax/instrucao.js"></script>
 <?php
-echo "<br><br>";
+	session_start();  
+	require_once('funcoes.php');
+
+	$_SESSION['post_id'] = $_GET['id'];
+	//echo "{$_SESSION['post_id']}";
+	echo "<br><br>";
 					try {
 						$user = 'root';
 						$pass = '';
@@ -29,12 +34,27 @@ echo "<br><br>";
 					    		echo "<h3>Comentários</h3><br>";
 
 					    	echo "</div>";
-					    	echo "<div class=\"btnComentario\">";
-					    		echo "<br><a class=\"p\" href=\"#\" id=\"display\" onclick=\"myFunction();\">Comentar</a>";
-					    	echo "</div>";
-					    	echo "<div id=\"NovoComentario\"   >";
-					    		echo "BATATA";
-					    	echo "</div>";
+					    	if (valida() == 1) 
+					    	{
+						    	echo "<div class=\"btnComentario\">";
+						    		echo "<br><a class=\"p\" href=\"#\" id=\"display\" onclick=\"myFunction();\">Novo Comentário</a>";
+						    	echo "</div>";
+						    	echo "<div id=\"NovoComentario\" class=\"NovoComentario\" >";
+							    		?>
+							    			<form method="GET" action="Funcoes/comment.php"> 
+										        	<div >
+										        		<div> <textarea name="comment" rows="4" cols="70"></textarea> </div>
+										        		<br>
+														<div> <button type="submit">Comentar</button>				   </div>
+														<div hidden="hidden"> <input type="post" name="usuario_id" value='<?php echo $_SESSION['id'] ?>'> </input> 						   </div>
+														<div hidden="hidden"> <input type="post" name="post_id" value='<?php echo $_GET['id']?>'></input>  									 </div>
+										        	</div>
+											</form>
+							    		<?php
+							    echo "</div>";
+					    	}
+					    	
+					    	//echo "<script type=\"text/javascript\"> abrirPag('Funcoes/comment.php');</script>";
 					    	echo "<br >";
 					    }
 
@@ -42,4 +62,18 @@ echo "<br><br>";
 					    print "Error!: " . $e->getMessage() . "<br/>";
 					    die();
 					}
+					
+						echo "<div class=\"Comentario\">";
+					  	$path = 'SELECT comentario.comentario, usuario.nome
+						 FROM comentario
+						 INNER JOIN usuario ON comentario.usuario_id = usuario.id
+						 WHERE comentario.status = 1 and comentario.post_id = '.$_GET['id'].'
+						 ORDER BY comentario.id desc;';
+						foreach($dbh->query($path) as $row)
+						{
+							echo '<div> <p id="pPost">'.$row['comentario']."</p></div> ";
+					   		echo '<div class="ShowName"> Por: '.$row['nome']."</div> ";
+						}
+						echo "<br><br><br>";
+					echo "</div>";
 				?>

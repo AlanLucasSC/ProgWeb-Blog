@@ -8,7 +8,7 @@
 		$param = array();
 		array_push($param, $_GET['login']);
 		array_push($param, $_GET['senha']);
-		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`, `Ativo`) VALUES (?, ?, NULL, 1, 1);";
+		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`, `status`) VALUES (?, ?, NULL, 1, 1);";
 		
 		$result = $objBd->exec($sql, 'ss', $param);
 		if($result == 1)

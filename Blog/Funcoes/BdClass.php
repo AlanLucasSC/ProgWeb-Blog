@@ -52,9 +52,7 @@ class bd{
 		if ($this->conn->errno) {
 			die('Invalid query: '.$this->conn->error());
 		}
-
-			return $result;
- 
+		return $result;
 	}
 }
 ?>

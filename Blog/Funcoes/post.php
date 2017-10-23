@@ -7,8 +7,9 @@
 		$conn=$objBd->conecta_mysql();
 		$param = array();
 		$data = date("Y/m/d H:i:s");
+		$_GET['post'] = strip_tags($_GET['post']);
 		array_push($param, $_GET['id']);
-		array_push($param, "<p>".$_GET['post']."</p>");
+		array_push($param, $_GET['post']);
 		array_push($param, $data);
 		array_push($param, $_GET['titulo']);
 		array_push($param, $_GET['descr']);

@@ -24,6 +24,7 @@
 		$_SESSION['tipoAlert'] = 'Alterado com sucesso';
 		header("location:../index.php");
 	}
+	
 ?>
 <!DOCTYPE html>
 <html>
