@@ -8,9 +8,11 @@
 		$param = array();
 		array_push($param, $_GET['login']);
 		array_push($param, $_GET['senha']);
-		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`, `status`) VALUES (?, ?, NULL, 1, 1);";
+		$data = date("Y/m/d H:i:s");
+		array_push($param, $data);
+		$sql="INSERT INTO `usuario` (`nome`, `senha`, `id`, `tipo`, `status`, `ult_alt`, `alt_usuario_id`) VALUES (?, ?, NULL, 1, 1, ?, 0);";
 		
-		$result = $objBd->exec($sql, 'ss', $param);
+		$result = $objBd->exec($sql, 'sss', $param);
 		if($result == 1)
 			{
 				$_SESSION['tipoAlert'] = 'Cadastro feito com sucesso';

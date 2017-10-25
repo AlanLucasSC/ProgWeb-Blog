@@ -9,7 +9,7 @@ function valida(){
 	{
 		return 1;
 	}
-}
+} 
 
 function logout(){
 	$_SESSION["nome"]=NULL;

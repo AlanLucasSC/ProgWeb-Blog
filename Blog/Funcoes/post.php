@@ -13,8 +13,9 @@
 		array_push($param, $data);
 		array_push($param, $_GET['titulo']);
 		array_push($param, $_GET['descr']);
-		$sql="INSERT INTO `post` (`usuario_id`, `post`, `creation_time`, `Titulo`, `id`, `Descricao`) VALUES (?, ?, ?, ?, NULL, ?);";
-		$result = $objBd->exec($sql, 'sssss', $param);
+		array_push($param, $_SESSION["id"]);
+		$sql="INSERT INTO `post` (`usuario_id`, `post`, `creation_time`, `Titulo`, `id`, `Descricao`, `ult_usuario_id`, `status`) VALUES (?, ?, ?, ?, NULL, ?, ?, 1);";
+		$result = $objBd->exec($sql, 'ssssss', $param);
 		?>
 				<script type="text/javascript">
 					alert($result);

@@ -9,9 +9,12 @@
 		array_push($param, $_GET['login']);
 		array_push($param, $_GET['senha']);
 		array_push($param, $_GET['id']);
+		$data = date("Y/m/d H:i:s");
+		array_push($param, $data);
+		array_push($param, $_SESSION["id"]);
 		array_push($param, $_GET['id']);
-		$sql="UPDATE `usuario` SET `nome`= ?,`senha`= ?,`id`= ? WHERE id = ?;";
-		$result = $objBd->exec($sql, 'ssss', $param);
+		$sql="UPDATE `usuario` SET `nome`= ?,`senha`= ?,`id`= ?, `ult_alt` = ?, `alt_usuario_id` = ? WHERE id = ?;";
+		$result = $objBd->exec($sql, 'ssssss', $param);
 		?>
 			<script type="text/javascript">
 				alert("Alterado com sucesso");
@@ -35,7 +38,7 @@
 			alert("Alterado com sucesso");
 		}
 </script>
-<link type="text/css" rel="stylesheet" media="screen" href="estilos.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="Funcoes/estilos.css" />
 </head>
 <body >
 

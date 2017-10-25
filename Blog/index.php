@@ -56,11 +56,24 @@
 				}
 				elseif ($i == 1)
 				{
-					if ($tipo == 2)
+					if ($tipo >= 2)
 					{
 			?>
 						<a class="p" href="#" onclick="abrirPag('Funcoes/post.php');">Post</a>
+						<a class="p" href="#" onclick="abrirPag('Funcoes/ShowMyPosts.php');">Gerenciar Posts</a>
 			<?php
+						if ($tipo >= 3) 
+						{
+			?>
+
+			<?php
+							if($tipo == 4) 
+							{
+			?>
+								<a class="p" href="#" onclick="abrirPag('Funcoes/ShowUser.php');">Usuários</a>
+			<?php
+							}
+						}
 					}
 			?>
 					<select id="mySelect" class="p" onchange="direcionar()" hidden="hidden">
@@ -87,7 +100,7 @@
 						echo "<script type=\"text/javascript\"> alert(\"{$_SESSION['type']}\");</script>";
 						?>
 							<script type="text/javascript">
-								abrirPag("Funcoes/login.php");
+								abrirPag(	<?php echo $_SESSION['where'];?>	);
 							</script>
 						<?php
 						$_SESSION['error'] = 0;

@@ -12,9 +12,12 @@
 		array_push($param, $_GET['comment']);
 		array_push($param, $_GET['usuario_id']);
 		array_push($param, $_GET['post_id']);
-		$sql="INSERT INTO `comentario` (`comentario`, `usuario_id`, `post_id`, `id`, `status`) VALUES (?, ?, ?, NULL, 1);";
+		$data = date("Y/m/d H:i:s");
+		array_push($param, $data);
+		array_push($param, $_SESSION['id']);
+		$sql="INSERT INTO `comentario` (`comentario`, `usuario_id`, `post_id`, `id`, `status`, `ult_alt`, `ult_usuario_id`) VALUES (?, ?, ?, NULL, 1, ?, ?);";
 		
-		$result = $objBd->exec($sql, 'sss', $param);
+		$result = $objBd->exec($sql, 'sssss', $param);
 
 		if($result == 1)
 			{

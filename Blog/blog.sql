@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 18-Out-2017 ‡s 03:01
--- Vers„o do servidor: 5.7.19
+-- Generation Time: 25-Out-2017 √†s 22:50
+-- Vers√£o do servidor: 5.7.19
 -- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,18 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `historico`
+-- Estrutura da tabela `comentario`
 --
 
-DROP TABLE IF EXISTS `historico`;
-CREATE TABLE IF NOT EXISTS `historico` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `comentario`;
+CREATE TABLE IF NOT EXISTS `comentario` (
+  `comentario` text NOT NULL,
+  `status` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `tipo_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ult_alt` datetime DEFAULT NULL,
+  `ult_usuario_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`),
-  KEY `tipo_id` (`tipo_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `post_id` (`post_id`),
+  KEY `ult_usuario_id` (`ult_usuario_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `comentario`
+--
+
+INSERT INTO `comentario` (`comentario`, `status`, `usuario_id`, `post_id`, `id`, `ult_alt`, `ult_usuario_id`) VALUES
+('Batata Shoooooooooooooooooooooooooooooow!!!!!!!!!!', 1, 2, 18, 1, '2017-10-17 00:00:00', 0),
+('Ahoooooo', 1, 2, 18, 2, '2017-10-01 00:00:00', 0),
+('Eu sou o verdadeiro Dougras', 1, 5, 18, 3, '2017-10-09 00:00:00', 0),
+('N√£o gosto de batata', 1, 5, 19, 4, '2017-10-02 00:00:00', 0),
+('Oi eu sou o hue', 1, 4, 18, 5, '2017-10-04 00:00:00', 0),
+('Eu sou o Drougras', 1, 4, 19, 6, '2017-10-05 00:00:00', 0),
+('Eu fiz essa musica', 1, 5, 20, 7, '2017-10-01 00:00:00', 0),
+('Eu sou o palha', 0, 8, 21, 8, '2017-10-02 00:00:00', 0),
+('OI eu sou o goku', 0, 11, 4, 9, '2017-10-25 22:39:41', 11);
 
 -- --------------------------------------------------------
 
@@ -51,30 +71,41 @@ CREATE TABLE IF NOT EXISTS `post` (
   `Descricao` varchar(200) NOT NULL,
   `post` text NOT NULL,
   `creation_time` datetime NOT NULL,
+  `ult_usuario_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
-  KEY `usuario_id` (`usuario_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  KEY `usuario_id` (`usuario_id`),
+  KEY `ult_usuario_id` (`ult_usuario_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `post`
 --
 
-INSERT INTO `post` (`usuario_id`, `Titulo`, `Descricao`, `post`, `creation_time`, `id`) VALUES
-(2, 'Teste', 'Sub_Titulo', 'aijifjiajidjiasjdjisjidjsijdi', '2017-10-10 22:59:00', 1),
-(2, 'Dougras', 'Sub_Titulo', 'Eu sou o dougras', '2017-10-17 23:49:00', 2),
-(2, 'Ha', 'Sub_Titulo', 'HUehuhuheuhuehheuhehheheuehuhuehehuhuehuhuhuehhuehueh\r\nAtt.\r\nMuleque ha', '2017-10-12 07:52:00', 4),
-(4, 'ApresentaÁ„o', 'Sub_Titulo', 'OI, eu sou o hue', '2017-10-13 03:01:40', 5),
-(2, 'OI', 'Sub_Titulo', 'OI', '2017-10-13 03:24:57', 6),
-(2, 'Mini-poker', 'Sub_Titulo', 'HistÛria fictÌcia.\r\n\r\nUm programador estava sem fazer nada, pois estava de fÈrias. Ent„o no meio da tarde ele pensou em fazer um jogo. Ele pensou por dias e dias em um jogo que ele conseguisse programar e de f·cil implementaÁ„o. Mas nada vinha na mente. Depois de acordar de um sonho, onde ele jogava poker e ganha um montante de algo, ele pensou em fazer um jogo de poker. Mas a preguiÁa o alertava. O jogo de poker tem diversas rodadas e diversos naipes, tornando o jogo complexo. Mas ele n„o desistiu, aquele sonho era uma mensagem. AtÈ que uma idÈia veio a sua cabeÁa. Tornar o poker mais f·cil. Assim, o mini-poker foi criado. Logo abaixo est„o as regras do jogo.\r\nNo inÌcio do jogo, cada jogador recebe cinco cartas. O conjunto de cinco cartas vale um certo n˙mero de pontos, de acordo com as regras descritas abaixo. Diferentemente do jogo de Poker normal, em Mini-Poker o naipe das cartas È desconsiderado. Assim, para simplificar a descriÁ„o do jogo, vamos utilizar os n˙meros de 1 a 13 para identificar as cartas do baralho, na ordem dada acima. Uma outra diferenÁa È que pode ocorrer empate entre mais de um vencedor, nesse caso os vencedores dividem o prÍmio.', '2017-10-13 03:25:51', 7),
-(5, 'Cominicado', 'Sub_Titulo', 'Eu sou o Dougras', '2017-10-13 03:31:30', 8),
-(5, 'Mini-Poker', '1. Problema - As regras para pontuaÁ„o em Mini-Poker s„o as seguintes:', '1. Se as cinco cartas est„o em seq¸Íncia a partir da carta x (ou seja, os valores das cartas s„o x, x+1, x+2, x+3 e x+4), a pontuaÁ„o È x+200 pontos. Por exemplo, se as cartas recebidas s„o 10, 9, 8, 11 e 12, a pontuaÁ„o È 208 pontos.\r\n2. Se h· quatro cartas iguais x (uma quadra, ou seja, os valores das cartas s„o x, x, x, x e y), a pontuaÁ„o È x+180 pontos. Por exemplo, se as cartas recebidas s„o 1, 1, 1, 10 e 1, a pontuaÁ„o È 181 pontos.\r\n3. Se h· trÍs cartas iguais x e duas outras cartas iguais y (uma trinca e um par, ou seja, os valores das cartas s„o x, x, x, y e y), a pontuaÁ„o È x + 160 pontos. Por exemplo, se as cartas recebidas s„o 10, 4, 4, 10 e 4, a pontuaÁ„o È 164 pontos.\r\n4. Se h· trÍs cartas iguais x e duas outras cartas diferentes y e z (uma trinca, ou seja, os valores das cartas s„o x, x, x, y e z), a pontuaÁ„o È x + 140 pontos. Por exemplo, se as cartas recebidas s„o 2, 3, 2, 2 e 13, a pontuaÁ„o È 142 pontos.\r\n5. Se h· duas cartas iguais x, duas outras cartas iguais y (x != y) e uma outra carta distinta z (dois pares, ou seja, os valores das cartas s„o x, x, y, y e z), a pontuaÁ„o È 3 ◊ x + 2 ◊ y + 20 pontos, em que x > y. Por exemplo, se as cartas recebidas s„o 12, 7, 12, 8 e 7, a pontuaÁ„o È 70 pontos.\r\n6. Se h· apenas duas cartas iguais x e as outras s„o todas distintas (um par, ou seja, os valores das cartas s„o x, x, y, z e t), a pontuaÁ„o È x pontos. Por exemplo, se as cartas recebidas s„o 12, 13, 5, 8 e 13, a pontuaÁ„o È 13 pontos.\r\n7. Se todas as cartas s„o distintas, n„o h· pontuaÁ„o.', '2017-10-13 03:46:33', 9),
-(5, 'Mini-Poker', '1. Problema - As regras para pontuaÁ„o em Mini-Poker', '1. Se as cinco cartas est„o em seq¸Íncia a partir da carta x (ou seja, os valores das cartas s„o x, x+1, x+2, x+3 e x+4), a pontuaÁ„o È x+200 pontos. Por exemplo, se as cartas recebidas s„o 10, 9, 8, 11 e 12, a pontuaÁ„o È 208 pontos.\r\n2. Se h· quatro cartas iguais x (uma quadra, ou seja, os valores das cartas s„o x, x, x, x e y), a pontuaÁ„o È x+180 pontos. Por exemplo, se as cartas recebidas s„o 1, 1, 1, 10 e 1, a pontuaÁ„o È 181 pontos.\r\n3. Se h· trÍs cartas iguais x e duas outras cartas iguais y (uma trinca e um par, ou seja, os valores das cartas s„o x, x, x, y e y), a pontuaÁ„o È x + 160 pontos. Por exemplo, se as cartas recebidas s„o 10, 4, 4, 10 e 4, a pontuaÁ„o È 164 pontos.\r\n4. Se h· trÍs cartas iguais x e duas outras cartas diferentes y e z (uma trinca, ou seja, os valores das cartas s„o x, x, x, y e z), a pontuaÁ„o È x + 140 pontos. Por exemplo, se as cartas recebidas s„o 2, 3, 2, 2 e 13, a pontuaÁ„o È 142 pontos.\r\n5. Se h· duas cartas iguais x, duas outras cartas iguais y (x != y) e uma outra carta distinta z (dois pares, ou seja, os valores das cartas s„o x, x, y, y e z), a pontuaÁ„o È 3 ◊ x + 2 ◊ y + 20 pontos, em que x > y. Por exemplo, se as cartas recebidas s„o 12, 7, 12, 8 e 7, a pontuaÁ„o È 70 pontos.\r\n6. Se h· apenas duas cartas iguais x e as outras s„o todas distintas (um par, ou seja, os valores das cartas s„o x, x, y, z e t), a pontuaÁ„o È x pontos. Por exemplo, se as cartas recebidas s„o 12, 13, 5, 8 e 13, a pontuaÁ„o È 13 pontos.\r\n7. Se todas as cartas s„o distintas, n„o h· pontuaÁ„o.', '2017-10-13 03:48:05', 10),
-(2, 'Teste comandos', '<h3>BATATA</h3>', '… sÛ um teste', '2017-10-13 13:40:55', 11),
-(2, 'OI Esse È mais um teste', 'HUehuehuehu\r\nhuehuehue\r\nhuehue', '<p></p>', '2017-10-13 13:42:45', 12),
-(2, 'Batata Show', 'batata show', '<p>batata show</p>', '2017-10-13 18:59:54', 13),
-(2, 'Teste', 'Testanto os enters', '<p>Batata\r\n\r\nBatata\r\n\r\nBatata</p>', '2017-10-14 04:12:58', 14),
-(2, 'Quebra de texto', 'teste para quebrar texto', '<p>uahsdhashufhashfahf\r\naf\r\n\r\n\r\nfaihfsuhufhuahfhuashf\r\n\r\n\r\nfauhfuhsaufhuahufhuahs\r\n<br>\r\nfaiiiasdsahfuhasuhf\r\n\r\nhfushaufhsuahuhsua</p>', '2017-10-17 20:00:23', 15);
+INSERT INTO `post` (`usuario_id`, `Titulo`, `Descricao`, `post`, `creation_time`, `ult_usuario_id`, `status`, `id`) VALUES
+(2, 'Teste', 's√≥ mais um teste', 'Som, Sooooooooooom, Testando o Soooooooooooooooom\r\nBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatata, leite', '2017-10-25 22:17:27', 2, 1, 1),
+(2, 'Dougras', 'Sub_Titulo', 'Eu sou o dougras', '2017-10-17 23:49:00', 0, 1, 2),
+(2, 'Ha', 'Batata', 'Batata √© bom!', '2017-10-25 22:41:11', 2, 1, 4),
+(4, 'Apresenta√ß√£o', 'Sub_Titulo', 'OI, eu sou o hue', '2017-10-13 03:01:40', 0, 1, 5),
+(2, 'OI', 'Sub_Titulo', 'OI', '2017-10-25 22:18:01', 2, 1, 6),
+(2, 'Mini-poker', 'Sub_Titulo', 'Hist√≥ria fict√≠cia.\r\n\r\nUm programador estava sem fazer nada, pois estava de f√©rias. Ent√£o no meio da tarde ele pensou em fazer um jogo. Ele pensou por dias e dias em um jogo que ele conseguisse programar e de f√°cil implementa√ß√£o. Mas nada vinha na mente. Depois de acordar de um sonho, onde ele jogava poker e ganha um montante de algo, ele pensou em fazer um jogo de poker. Mas a pregui√ßa o alertava. O jogo de poker tem diversas rodadas e diversos naipes, tornando o jogo complexo. Mas ele n√£o desistiu, aquele sonho era uma mensagem. At√© que uma id√©ia veio a sua cabe√ßa. Tornar o poker mais f√°cil. Assim, o mini-poker foi criado. Logo abaixo est√£o as regras do jogo.\r\nNo in√≠cio do jogo, cada jogador recebe cinco cartas. O conjunto de cinco cartas vale um certo n√∫mero de pontos, de acordo com as regras descritas abaixo. Diferentemente do jogo de Poker normal, em Mini-Poker o naipe das cartas √© desconsiderado. Assim, para simplificar a descri√ß√£o do jogo, vamos utilizar os n√∫meros de 1 a 13 para identificar as cartas do baralho, na ordem dada acima. Uma outra diferen√ßa √© que pode ocorrer empate entre mais de um vencedor, nesse caso os vencedores dividem o pr√™mio.', '2017-10-13 03:25:51', 0, 1, 7),
+(5, 'Cominicado', 'Sub_Titulo', 'Eu sou o Dougras', '2017-10-25 22:17:59', 2, 1, 8),
+(5, 'Mini-Poker', '1. Problema - As regras para pontua√ß√£o em Mini-Poker s√£o as seguintes:', '1. Se as cinco cartas est√£o em seq√º√™ncia a partir da carta x (ou seja, os valores das cartas s√£o x, x+1, x+2, x+3 e x+4), a pontua√ß√£o √© x+200 pontos. Por exemplo, se as cartas recebidas s√£o 10, 9, 8, 11 e 12, a pontua√ß√£o √© 208 pontos.\r\n2. Se h√° quatro cartas iguais x (uma quadra, ou seja, os valores das cartas s√£o x, x, x, x e y), a pontua√ß√£o √© x+180 pontos. Por exemplo, se as cartas recebidas s√£o 1, 1, 1, 10 e 1, a pontua√ß√£o √© 181 pontos.\r\n3. Se h√° tr√™s cartas iguais x e duas outras cartas iguais y (uma trinca e um par, ou seja, os valores das cartas s√£o x, x, x, y e y), a pontua√ß√£o √© x + 160 pontos. Por exemplo, se as cartas recebidas s√£o 10, 4, 4, 10 e 4, a pontua√ß√£o √© 164 pontos.\r\n4. Se h√° tr√™s cartas iguais x e duas outras cartas diferentes y e z (uma trinca, ou seja, os valores das cartas s√£o x, x, x, y e z), a pontua√ß√£o √© x + 140 pontos. Por exemplo, se as cartas recebidas s√£o 2, 3, 2, 2 e 13, a pontua√ß√£o √© 142 pontos.\r\n5. Se h√° duas cartas iguais x, duas outras cartas iguais y (x != y) e uma outra carta distinta z (dois pares, ou seja, os valores das cartas s√£o x, x, y, y e z), a pontua√ß√£o √© 3 √ó x + 2 √ó y + 20 pontos, em que x > y. Por exemplo, se as cartas recebidas s√£o 12, 7, 12, 8 e 7, a pontua√ß√£o √© 70 pontos.\r\n6. Se h√° apenas duas cartas iguais x e as outras s√£o todas distintas (um par, ou seja, os valores das cartas s√£o x, x, y, z e t), a pontua√ß√£o √© x pontos. Por exemplo, se as cartas recebidas s√£o 12, 13, 5, 8 e 13, a pontua√ß√£o √© 13 pontos.\r\n7. Se todas as cartas s√£o distintas, n√£o h√° pontua√ß√£o.', '2017-10-13 03:46:33', 0, 1, 9),
+(5, 'Mini-Poker', '1. Problema - As regras para pontua√ß√£o em Mini-Poker', '1. Se as cinco cartas est√£o em seq√º√™ncia a partir da carta x (ou seja, os valores das cartas s√£o x, x+1, x+2, x+3 e x+4), a pontua√ß√£o √© x+200 pontos. Por exemplo, se as cartas recebidas s√£o 10, 9, 8, 11 e 12, a pontua√ß√£o √© 208 pontos.\r\n2. Se h√° quatro cartas iguais x (uma quadra, ou seja, os valores das cartas s√£o x, x, x, x e y), a pontua√ß√£o √© x+180 pontos. Por exemplo, se as cartas recebidas s√£o 1, 1, 1, 10 e 1, a pontua√ß√£o √© 181 pontos.\r\n3. Se h√° tr√™s cartas iguais x e duas outras cartas iguais y (uma trinca e um par, ou seja, os valores das cartas s√£o x, x, x, y e y), a pontua√ß√£o √© x + 160 pontos. Por exemplo, se as cartas recebidas s√£o 10, 4, 4, 10 e 4, a pontua√ß√£o √© 164 pontos.\r\n4. Se h√° tr√™s cartas iguais x e duas outras cartas diferentes y e z (uma trinca, ou seja, os valores das cartas s√£o x, x, x, y e z), a pontua√ß√£o √© x + 140 pontos. Por exemplo, se as cartas recebidas s√£o 2, 3, 2, 2 e 13, a pontua√ß√£o √© 142 pontos.\r\n5. Se h√° duas cartas iguais x, duas outras cartas iguais y (x != y) e uma outra carta distinta z (dois pares, ou seja, os valores das cartas s√£o x, x, y, y e z), a pontua√ß√£o √© 3 √ó x + 2 √ó y + 20 pontos, em que x > y. Por exemplo, se as cartas recebidas s√£o 12, 7, 12, 8 e 7, a pontua√ß√£o √© 70 pontos.\r\n6. Se h√° apenas duas cartas iguais x e as outras s√£o todas distintas (um par, ou seja, os valores das cartas s√£o x, x, y, z e t), a pontua√ß√£o √© x pontos. Por exemplo, se as cartas recebidas s√£o 12, 13, 5, 8 e 13, a pontua√ß√£o √© 13 pontos.\r\n7. Se todas as cartas s√£o distintas, n√£o h√° pontua√ß√£o.', '2017-10-13 03:48:05', 0, 1, 10),
+(2, 'Teste comandos', '<h3>BATATA</h3>', '√â s√≥ um teste', '2017-10-25 22:17:56', 2, 1, 11),
+(2, 'OI Esse √© mais um teste', 'HUehuehuehu\r\nhuehuehue\r\nhuehue', '<p></p>', '2017-10-25 22:17:53', 2, 1, 12),
+(2, 'Batata Show', 'batata show', '<p>batata show</p>', '2017-10-13 18:59:54', 0, 1, 13),
+(2, 'Teste', 'Testanto os enters', '<p>Batata\r\n\r\nBatata\r\n\r\nBatata</p>', '2017-10-25 22:17:51', 2, 1, 14),
+(2, 'Quebra de texto', 'teste para quebrar texto', '<p>uahsdhashufhashfahf\r\naf\r\n\r\n\r\nfaihfsuhufhuahfhuashf\r\n\r\n\r\nfauhfuhsaufhuahufhuahs\r\n<br>\r\nfaiiiasdsahfuhasuhf\r\n\r\nhfushaufhsuahuhsua</p>', '2017-10-17 20:00:23', 0, 1, 15),
+(2, 'Ol√° pessoal', 'Esse √© s√≥ um teste', '<p>BATATA ASSADA</p>', '2017-10-19 18:07:15', 0, 1, 16),
+(2, 'ShowPost.php', 'C√≥digo do ShowPost', '<p><?php\r\necho \"<br><br>\";\r\n					try {\r\n						$user = \'root\';\r\n						$pass = \'\';\r\n					    $dbh = new PDO(\'mysql:host=localhost;dbname=blog\', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => \"SET NAMES \'utf8\'\"));\r\n					    $path = \'SELECT post.post, post.creation_time, usuario.nome, post.Titulo, post.Descricao\r\n											 FROM usuario\r\n											 INNER JOIN post\r\n											 ON usuario.id = post.usuario_id\r\n											 WHERE post.id = \'.$_GET[\'id\'].\';\';\r\n					    foreach($dbh->query($path) as $row) {\r\n					        //print_r($row);\r\n					        $path = \"\'ShowPost.php\'\";\r\n					        echo \'<div style=\"margin: auto; width: 50%;\">\';\r\n					    			echo \'<div > <p ><h4 style=\"display: inline;\" >Cria√ß√£o: </h4> \'.$row[\'creation_time\'].\"</div> \";\r\n					    			echo \'<div > <h3 style=\"margin-bottom: 0px;\">Titulo: \'.$row[\'Titulo\'].\"</h3></div> \";;\r\n					    			echo \'<div > <h4 style=\"margin-top: 0px; color: black\">\'.$row[\'Descricao\'].\"</h4></div> \";\r\n					    			echo \'<div> <p style=\"white-space: pre-line;\">\'.$row[\'post\'].\"</p></div> \";\r\n					    			echo \'<div class=\"desc\" style=\" margin-left: 45%; text-align: left;\" > Por: \'.$row[\'nome\'].\"</div> \";\r\n					    			\r\n					    	echo \"</div>\";\r\n					    	echo \"<hr style=\' margin-left: 10%; margin-right: 10%;\'>\";\r\n					    	echo \"<br >\";\r\n					    }\r\n\r\n					} catch (PDOException $e) {\r\n					    print \"Error!: \" . $e->getMessage() . \"<br/>\";\r\n					    die();\r\n					}\r\n				?></p>', '2017-10-19 18:40:29', 0, 1, 17),
+(2, 'Teste', 'teste', '<p><br><br>\r\n<h1>BATATA</h1></p>', '2017-10-25 22:17:48', 2, 1, 18),
+(2, 'Novo teste', 'Teste de ver se um comando est√° entrando na variavel', '\r\n\r\n\r\n\r\nBatata Show', '2017-10-25 22:17:47', 2, 1, 19),
+(2, 'Eu sou o Dougras', 'Musica do Youtube', 'Eu sou o Dougras\r\nVoc√™ n√£o √© o Dougras (x2)\r\n\r\nEu estou aqui, to aqui\r\nEstou aqui, com irmaoz√£o, Gabriel, Miguel, Samuel\r\nTinha uns casal aqui, tinha aqui\r\nAgora tem um monte de mato aqui\r\nTem um monte de mato aqui\r\n\r\nEu to a√≠ (x3)\r\n\r\nMeu amigo\r\nDeus √© b√£o\r\n\r\nEstamos junto\r\nNa sele√ß√£o brasileira jogando Neymar e o Kak√°\r\nCristiano Ronaldo, Messi\r\nO Cristiano Ronaldo √© o melhor jogador do mundo rapai\r\n√â, mas n√≥is √© fei hein fi\r\nN√£o, voc√™ √© fei hein fi\r\nN√£o, c√™ √© fei hein fi\r\n\r\nO ma me ma ha he\r\nAlududidudid\r\nAlududidudid\r\nAlududidudid\r\nAbububububububu\r\nAbububububububub\r\nAbebebea hae\r\nAb eb aehba beh ah ah\r\n\r\nAaaaaahhh\r\n\r\nEu sou o Dougras\r\nVoc√™ n√£o √© o Dougras (x2)', '2017-10-24 16:01:14', 0, 1, 20),
+(4, 'Poema', 'Um poema escrito por min', 'Batatinha quando nasce espalha a rama pelo ch√£o.\r\nMenininha quando dorme p√µe a m√£o no cora√ß√£o.\r\nSou pequeninha do tamanho do bot√£o,\r\ncarrego papai no bolso e mam√£e no cora√ß√£o.\r\nO bolso furou e o papai caiu no ch√£o.\r\nMam√£e que √© mais querida ficou no cora√ß√£o.', '2017-10-25 14:00:25', 0, 1, 21),
+(2, 'teste', 's√≥ mais um teste', 'blabla', '2017-01-12 12:01:00', 2, 1, 22),
+(2, 'Teste de historico', 's√≥ testando', 'blablablabla', '2017-10-25 22:49:13', 2, 1, 23);
 
 -- --------------------------------------------------------
 
@@ -100,19 +131,26 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `tipo` int(11) NOT NULL,
   `senha` varchar(250) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Ativo` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL,
+  `ult_alt` datetime DEFAULT NULL,
+  `alt_usuario_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `alt_usuario_id` (`alt_usuario_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`nome`, `tipo`, `senha`, `id`, `Ativo`) VALUES
-('Alann', 2, '123', 2, 0),
-('Dougras', 2, '123', 5, 0),
-('Hue', 2, '123', 4, 0),
-('Batata', 1, 'Show', 6, 0);
+INSERT INTO `usuario` (`nome`, `tipo`, `senha`, `id`, `status`, `ult_alt`, `alt_usuario_id`) VALUES
+('Alan', 4, '123', 2, 1, '2017-10-25 22:19:24', 2),
+('batatinha', 3, 'quandonasce', 4, 1, '2017-10-02 00:00:00', 0),
+('ovo', 2, 'cuzido', 6, 1, '2017-10-25 22:43:34', 2),
+('Dougras', 2, 'eusou', 5, 1, '2017-10-01 00:00:00', 0),
+('palha', 3, 'assada', 8, 1, '2017-10-25 22:43:57', 2),
+('Alan Lucas Silva de Castro', 1, '123456', 9, 1, '2017-10-07 00:00:00', 0),
+('batataSalgada', 1, '123', 10, 1, NULL, 1),
+('Goku', 1, 'oieusouogoku', 11, 1, '2017-10-25 22:34:22', 11);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

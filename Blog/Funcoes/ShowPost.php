@@ -26,8 +26,6 @@
 					    			echo '<div > <h4 class="hDesc">'.$row['Descricao']."</h4></div> ";
 					    			echo '<div> <p id="pPost">'.$row['post']."</p></div> ";
 					    			echo '<div class="ShowName"> Por: '.$row['nome']."</div> ";
-
-					    			
 					    	echo "</div>";
 					    	echo "<hr class=\"hrPost\">";
 					    	echo "<div class=\"TituloComentarios\">";
@@ -64,7 +62,7 @@
 					}
 					
 						echo "<div class=\"Comentario\">";
-					  	$path = 'SELECT comentario.comentario, usuario.nome
+					  	$path = 'SELECT comentario.comentario, usuario.nome, comentario.id, comentario.usuario_id
 						 FROM comentario
 						 INNER JOIN usuario ON comentario.usuario_id = usuario.id
 						 WHERE comentario.status = 1 and comentario.post_id = '.$_GET['id'].'
@@ -73,6 +71,12 @@
 						{
 							echo '<div> <p id="pPost">'.$row['comentario']."</p></div> ";
 					   		echo '<div class="ShowName"> Por: '.$row['nome']."</div> ";
+					   		if (isset($_SESSION['tipo']) && isset($_SESSION['id'])) {
+					   			if ($_SESSION["tipo"] >= 3 || $row['usuario_id'] == $_SESSION['id']) {
+					   				echo "<div>	<a class=\"p\" href=\"Funcoes/deleteComment.php?id=".$row['id']."\">Excluir</a>	<div>";
+					   			}
+					   		}
+					   		echo "<hr>";
 						}
 						echo "<br><br><br>";
 					echo "</div>";

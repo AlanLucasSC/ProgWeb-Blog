@@ -26,7 +26,7 @@ if(isset($_GET['login']) and isset($_GET['senha'])){
 	}
 	else{
 		$_SESSION['error'] = 1;
-		$_SESSION['where'] = '\"Funcoes/login.php\"';
+		$_SESSION['where'] = '"Funcoes/login.php"';
 		$_SESSION['type'] = 'Erro ao logar';
 		header("location: ../index.php");
 	}

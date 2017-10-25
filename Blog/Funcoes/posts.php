@@ -14,11 +14,12 @@
                                 FROM usuario
                                 INNER JOIN post
                                 ON usuario.id = post.usuario_id
+                                WHERE post.status = 1
                                 ORDER BY post.creation_time DESC;'
                                 ) as $row) 
             {
                             //print_r($row);
-                $path = "Funcoes/ShowPost.php";
+                $path = "Funcoes/ShowPost.php"; 
                 $path = $path."?id=".$row['post_id'];
                 $path = "'{$path}'";
                 echo '<div style="width: 55%; margin: 0 0 10px 10%;">';
