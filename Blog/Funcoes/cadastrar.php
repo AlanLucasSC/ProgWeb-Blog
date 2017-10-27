@@ -34,8 +34,8 @@
 	<form method="GET" action="Funcoes/cadastrar.php"> 
         	<div class="login">
         		<h2 >Cadastrar</h2>
-        		<div style="margin-bottom: 2px;">Nome: <input type="text" name="login" >  </div>
-    			<div style="margin-bottom: 2px;">Senha: <input type="password" name="senha"><br></div>
+        		<div class="alter">Nome: <input type="text" name="login" >  </div>
+    			<div class="alter">Senha: <input type="password" name="senha"><br></div>
     			<!--
     			<div>Tipo de usuário
     				<select name="TipoDeUsario">
