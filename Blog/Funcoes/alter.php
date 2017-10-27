@@ -45,8 +45,8 @@
 	<form method="GET" action="Funcoes/alter.php">
         	<div class="login">
         		<h2 >Alterar</h2>
-        		<div style="margin-bottom: 2px;">Novo Nome: <input type="text" name="login" value='<?php echo $_SESSION["nome"]?>'>  </div>
-    			<div style="margin-bottom: 2px;">Nova Senha: <input type="password" name="senha"><br></div>
+        		<div class="alter">Novo Nome: <input type="text" name="login" value='<?php echo $_SESSION["nome"]?>'>  </div>
+    			<div class="alter">Nova Senha: <input type="password" name="senha"><br></div>
     			<div><input type="text" name="id" value='<?php echo $_SESSION["id"]?>' hidden="hidden"></div>
 				<div><button type="submit">Alterar</button></div>
         	</div>
