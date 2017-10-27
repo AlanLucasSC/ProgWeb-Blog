@@ -22,11 +22,11 @@
                 $path = "Funcoes/ShowPost.php"; 
                 $path = $path."?id=".$row['post_id'];
                 $path = "'{$path}'";
-                echo '<div style="width: 55%; margin: 0 0 10px 10%;">';
-                echo '<div style="width: 90%;"> <p ><h4 style="display: inline;">Criação: </h4> '.$row['creation_time']."</div> ";
-                echo '<div style="width: 90%;"> <h3 style="margin-bottom: 1px;">'.$row['Titulo']."</h3></div> ";;
-                echo '<div class="desc" style="width: 90%;"> '.$row['Descricao']."</div> ";
-                echo '<div class="desc" style="width: 90%; margin-left: 70%;" > <a class="publicacao" href="#" onclick="abrirPag('.$path.');">Ler Publicação</a> Por: '.$row['nome']."</div> ";
+                echo '<div class="posts">';
+                echo '<div class="posts2"> <p ><h4 style="display: inline;">Criação: </h4> '.$row['creation_time']."</div> ";
+                echo '<div class="posts2"> <h3 style="margin-bottom: 1px;">'.$row['Titulo']."</h3></div> ";;
+                echo '<div class="desc" class="posts2"> '.$row['Descricao']."</div> ";
+                echo '<div class="desc" class="posts3" > <a class="publicacao" href="#" onclick="abrirPag('.$path.');">Ler Publicação</a> Por: '.$row['nome']."</div> ";
                 echo "<hr>";
                 echo "</div>";
                 echo "<br>";
