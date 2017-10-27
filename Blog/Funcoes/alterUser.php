@@ -50,8 +50,8 @@
 	<form method="GET" action="Funcoes/alterUser.php">
         	<div class="login">
         		<h2 >Alterar</h2>
-        		<div style="margin-bottom: 2px;">Novo Nome: <input type="text" name="login">  </div>
-    			<div style="margin-bottom: 2px;">Nova Senha: <input type="password" name="senha"><br></div>
+        		<div class="alter">Novo Nome: <input type="text" name="login">  </div>
+    			<div class="alter">Nova Senha: <input type="password" name="senha"><br></div>
     			<div class="choice">
     				<select class="p" name="tipo">
 						<option value="1">Usuario</option>
