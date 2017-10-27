@@ -48,8 +48,8 @@ if(isset($_GET['login']) and isset($_GET['senha'])){
 	<form method="GET" action="Funcoes/login.php">
         	<div class="login">
         		<h2 >Login</h2>
-        		<div style="margin-bottom: 2px;">Nome: <input type="text" name="login">  </div>
-    			<div style="margin-bottom: 2px;">Senha: <input type="password" name="senha"><br></div>
+        		<div class="alter">Nome: <input type="text" name="login">  </div>
+    			<div class="alter">Senha: <input type="password" name="senha"><br></div>
 				<div><button type="submit">Logar</button></div>
         	</div>
 	</form>
