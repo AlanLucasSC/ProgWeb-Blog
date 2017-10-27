@@ -44,7 +44,7 @@
 </head>
 <body>
 	<form method="GET" action="Funcoes/AlterarPost.php"> 
-        	<div style="    margin-left: 25%; margin-top: 10%;">
+        	<div class="alterarPost">
         		<h2 >Alterar Publicação</h2>
         		<div>Título:  <textarea name="titulo" rows="1" cols="93"></textarea> </div>
         		<div>Descrição: <textarea name="descr" rows="1" cols="90"></textarea> </div>
